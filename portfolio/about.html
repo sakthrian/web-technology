@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8">
+	<title>About Me</title>
+	<link rel="stylesheet" href="about-styles.css">
+    <!-- box icons -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+
+</head>
+<body>
+	<div class="wrapper">
+		<div class="resume">
+			<div class="left">
+				<div class="img_holder" >
+					<img id="image"  src="images/withoutBgAbout.png" alt="picture">
+				</div>
+				<div class="acheivements_wrap pb">
+					<div class="title">
+						Achievements
+					</div>
+					<div class="acheivements">
+						<ul>
+							<li>
+								<div class="li_wrap">
+									<div class="icon"><i class='bx bxs-award'></i></i></div>
+									<div class="text">Second prize in coding contest conducted by IEEE</div>
+								</div>
+							</li>
+							<li>
+								<div class="li_wrap">
+									<div class="icon"><i class='bx bxs-cloud'></i></i></div>
+									<div class="text">Completed Internship on cloud computing in CDAC(Chennai)</div>
+								</div>
+							</li>
+							<li>
+								<div class="li_wrap">
+									<div class="icon"><i class='bx bx-laptop'></i></i></div>
+									<div class="text">I regularly engage in coding on platforms such as HackerRank and Leetcode</div>
+								</div>
+							</li>
+
+						</ul>
+					</div>
+				</div>
+				<div class="skills_wrap pb">
+					<div class="title">
+						Skills
+					</div>
+					<div class="skills">
+						<ul>
+                            <li>
+								<div class="li_wrap">
+									<div class="icon"><i class='bx bxl-android'></i></i></div>
+									<div class="text">Android</div>
+								</div>
+							</li>
+                            <li>
+								<div class="li_wrap">
+									<div class="icon"><i class='bx bxl-python'></i></div>
+									<div class="text">Python</div>
+								</div>
+							</li>
+                            <li>
+								<div class="li_wrap">
+									<div class="icon"><i class='bx bxl-java'></i></div>
+									<div class="text">Java</div>
+								</div>
+							</li>
+                            <li>
+								<div class="li_wrap">
+									<div class="icon"><i class='bx bxl-c-plus-plus'></i></div>
+									<div class="text">C,C++,C#</div>
+								</div>
+							</li>
+                            <li>
+								<div class="li_wrap">
+									<div class="icon"><i class='bx bxs-data' ></i></div>
+									<div class="text">SQL</div>
+								</div>
+							</li>
+                            <li>
+								<div class="li_wrap">
+									<div class="icon"><i class='bx bxl-git'></i></div>
+									<div class="text">Git</div>
+								</div>
+							</li>
+							<li>
+								<div class="li_wrap">
+									<div class="icon"><i class='bx bxl-html5'></i></div>
+									<div class="text">HTML</div>
+								</div>
+							</li>
+							<li>
+								<div class="li_wrap">
+									<div class="icon"><i class='bx bxs-file-css'></i></div>
+									<div class="text">CSS</div>
+								</div>
+							</li>
+							<li>
+								<div class="li_wrap">
+									<div class="icon"><i class='bx bxl-javascript'></i></div>
+									<div class="text">Javascript</div>
+								</div>
+							</li>
+                            
+                            
+						</ul>
+					</div>
+				</div>
+				<div class="hobbies_wrap pb">
+					<div class="title">
+						hobbies
+					</div>
+					<div class="hobbies">
+						<ul>
+							<li>
+								<div class="li_wrap" >
+									<div class="icon"><i class='bx bxs-book-alt'></i></div>
+									<div class="text">Reading</div>
+								</div>
+							</li>
+							<li>
+								<div class="li_wrap">
+									<div class="icon"><i class='bx bxs-music'></i></i></div>
+									<div class="text">Music</div>
+								</div>
+							</li>
+							<li>
+								<div class="li_wrap">
+									<div class="icon"><i class='bx bxs-joystick'></i></div>
+									<div class="text">Gaming</div>
+								</div>
+							</li>
+							<li>
+								<div class="li_wrap">
+									<div class="icon"><i class='bx bxs-videos'></i></div>
+									<div class="text">Editing</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="hobbies_wrap pb">
+					<div class="title">
+						additionals
+					</div>
+
+					<div>
+						<input type="text" id="resumeItemInput" placeholder="Enter aditional info">
+						<button class="btn" onclick="addItem()">Add</button>
+	
+						<ul id="resumeItemList"></ul>
+	
+						<script>
+							function displayItems() {
+								var resumeItemList = document.getElementById("resumeItemList");
+								resumeItemList.innerHTML = "";
+	
+								var resumeItems = JSON.parse(localStorage.getItem("resumeItems")) || [];
+	
+								resumeItems.forEach(function(item, index) {
+									var listItem = document.createElement("li");
+									listItem.textContent = item;
+	
+									var removeButton = document.createElement("button");
+									removeButton.textContent = "remove";
+									removeButton.className="btn"
+									removeButton.onclick = function() {
+										removeItem(index);
+									};
+	
+									listItem.appendChild(removeButton);
+									resumeItemList.appendChild(listItem);
+								});
+							}
+	
+							function addItem() {
+								var resumeItemInput = document.getElementById("resumeItemInput");
+								var item = resumeItemInput.value.trim();
+	
+								if (item !== "") {
+									var resumeItems = JSON.parse(localStorage.getItem("resumeItems")) || [];
+									resumeItems.push(item);
+									localStorage.setItem("resumeItems", JSON.stringify(resumeItems));
+									resumeItemInput.value = "";
+									displayItems();
+								}
+							}
+	
+							function removeItem(index) {
+								var resumeItems = JSON.parse(localStorage.getItem("resumeItems")) || [];
+								resumeItems.splice(index, 1);
+								localStorage.setItem("resumeItems", JSON.stringify(resumeItems));
+								displayItems();
+							}
+	
+							displayItems();
+						</script>
+	
+					</div>
+					
+				</div>
+
+			</div>
+			<div class="right">
+				<div class="header">
+					<div class="name_role">
+						<div class="name">
+							Sakthrian
+						</div>
+						<div class="role">
+							Pre Final Year Student
+						</div>
+					</div>
+					<div class="about">
+						Hello! I'm Sakthrian C, a third-year student pursuing Computer Science Engineering at Puducherry Technological University. I have a strong passion for technology and a keen interest in exploring the world of computer science.
+					</div>
+				</div>
+				<div class="right_inner">
+					<div class="self-intro">
+						<div class="title">
+							Self Intro
+						</div>
+                        <div class="self-intro_wrap">
+                            <video width="650" controls>
+                                <source src="video/self_intro.mp4" type="video/mp4">
+                                Your browser does not support HTML video.
+                            </video>
+                        </div>	   
+					
+					</div>
+					<div class="education">
+						<div class="title">
+							Education
+						</div>
+						<div class="education_wrap">
+							<ul>
+								<li>
+									<div class="li_wrap">
+										<div class="date">
+											2021 - Present
+										</div>
+										<div class="info">
+											<p class="info_title">
+												B-Tech Computer Science Engineering
+											</p>
+											<p class="info_com">
+												Puducherry Technological University
+											</p>
+											<p class="info_cont">
+												I am currently studying B-Tech CSE and have maintained a CGPA of 8.65.
+											</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="li_wrap">
+										<div class="date">
+											2020 - 2021
+										</div>
+										<div class="info">
+											<p class="info_title">
+												12th(HSLC)
+											</p>
+											<p class="info_com">
+												Amalorpavam Higher Secondary School
+											</p>
+											<p class="info_cont">
+												I have completed my HSLC schooling by pursuing 95.3%
+											</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class="li_wrap">
+										<div class="date">
+											2018 - 2019
+										</div>
+										<div class="info">
+											<p class="info_title">
+												10th (SSLC)
+											</p>
+											<p class="info_com">
+												Amalorpavam Higher Secondary School
+											</p>
+											<p class="info_cont">
+												I have completed my SSLC schooling by pursuing 95.6%
+											</p>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+                    <div class="languages">
+                        <div class="title">
+							languages
+						</div>
+						<table style="padding-left: 40PX;">
+							<tr>
+								<td class="languages-wrap">
+									
+										
+										<li>
+											<div class="li_wrap">
+												<div class="text">Tamil</div>
+											</div>
+										</li>	
+									
+								</td>
+								<td> 
+									<canvas id="myCanvas" width="200%" height="50%" style="left: 0;"></canvas>
+    
+									<script>
+								   const canvas = document.getElementById("myCanvas");
+								   const ctx = canvas.getContext("2d");
+								   
+								   ctx.beginPath();
+								   ctx.arc(20,15,15,0,2*Math.PI);
+								   ctx.fillStyle = "#0ef";
+								   ctx.fill(); 
+								   ctx.beginPath(); 
+								   ctx.arc(60,15,15,0,2*Math.PI);
+								   ctx.fill(); 
+								   ctx.beginPath(); 
+								   ctx.arc(100,15,15,0,2*Math.PI);
+								   ctx.fill(); 
+								   ctx.beginPath(); 
+								   ctx.arc(140,15,15,0,2*Math.PI);
+								   ctx.fill();  
+								   ctx.arc(180,15,15,0,2*Math.PI);
+								   ctx.fill();
+								   </script>
+								</td>
+							</tr>
+							<tr>
+								<td class="languages-wrap">
+									
+										
+										<li>
+											<div class="li_wrap">
+												<div class="text">English</div>
+											</div>
+										</li>	
+									
+								</td>
+								<td> 
+									<canvas id="myCanvas1" width="200%" height="50%" style="left: 0;"></canvas>
+    
+									<script>
+								   const canvas1 = document.getElementById("myCanvas1");
+								   const ctx1 = canvas1.getContext("2d");
+								   
+								   ctx1.beginPath();
+								   ctx1.arc(20,15,15,0,2*Math.PI);
+								   ctx1.fillStyle = "#0ef";
+								   ctx1.fill(); 
+								   ctx1.beginPath(); 
+								   ctx1.arc(60,15,15,0,2*Math.PI);
+								   ctx1.fill(); 
+								   ctx1.beginPath(); 
+								   ctx1.arc(100,15,15,0,2*Math.PI);
+								   ctx1.fill(); 
+								   ctx1.beginPath(); 
+								   ctx1.arc(140,15,15,0,2*Math.PI);
+								   ctx1.fill(); 
+								   ctx1.beginPath(); 
+								   ctx1.arc(180,15,15,0,2*Math.PI);
+								   ctx1.fillStyle="#1f242d"
+								   ctx1.fill();
+								   </script>
+								</td>
+							</tr>
+
+							<tr>
+								<td class="languages-wrap">
+									
+										
+										<li>
+											<div class="li_wrap">
+												<div class="text">Hindi</div>
+											</div>
+										</li>	
+									
+								</td>
+								<td> 
+									<canvas id="myCanvas2" width="200%" height="50%" style="left: 0;"></canvas>
+    
+									<script>
+								   const canvas2 = document.getElementById("myCanvas2");
+								   const ctx2 = canvas2.getContext("2d");
+								   
+								   ctx2.beginPath();
+								   ctx2.arc(20,15,15,0,2*Math.PI);
+								   ctx2.fillStyle = "#0ef";
+								   ctx2.fill(); 
+								   ctx2.beginPath(); 
+								   ctx2.arc(60,15,15,0,2*Math.PI);
+								   ctx2.fill(); 
+								   ctx2.beginPath(); 
+								   ctx2.arc(100,15,15,0,2*Math.PI);
+								   ctx2.fill(); 
+								   ctx2.beginPath(); 
+								   ctx2.arc(140,15,15,0,2*Math.PI);
+								   ctx2.fillStyle="#1f242d"
+								   ctx2.fill(); 
+								   ctx2.beginPath(); 
+								   ctx2.arc(180,15,15,0,2*Math.PI);
+								   ctx2.fillStyle="#1f242d"
+								   ctx2.fill();
+								   </script>
+								</td>
+							</tr>
+
+						</table>
+                                               
+                    </div>
+
+					<div class="location">
+                        <div class="title">
+							location
+						</div>
+                        <div class="location-wrap" id="getLocation">
+                            <div class="li_wrap">
+                                <div class="text" id="click" onclick="getlocation();">Get location</div>
+                            </div>
+                        </div> 
+						<div id="demo"></div>
+					    
+                    </div>
+					<div>
+						<div class="drag-item" draggable="true" ondragstart="event.dataTransfer.setData('text/plain', 'Certificates')">Certificates</div>
+
+						<div class="drop-zone" ondragover="event.preventDefault()" ondrop="drop(event)">
+   							 Drop yor certificates here
+							<div id="droppedItems"></div>
+						</div>
+
+						<script>
+    						function drop(event) {
+        					event.preventDefault();
+        					var data = event.dataTransfer.getData("text/plain");
+        					var droppedItems = document.getElementById("droppedItems");
+        					var newItem = document.createElement("div");
+        					newItem.classList.add("dropped-item");
+        					newItem.textContent = data;
+        					droppedItems.appendChild(newItem);
+    						}
+						</script>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script>
+	function myCanvas() {
+	  var c = document.getElementById("myCanvas");
+	  var ctx = c.getContext("2d");
+	  var img = document.getElementById("image");
+	  ctx.drawImage(img,20,20,250,250);
+	}
+</script>
+
+<script src="https://maps.google.com/maps/api/js?sensor=false"> </script>
+   
+   <script type="text/javascript">
+   function getlocation(){
+       if(navigator.geolocation){
+           navigator.geolocation.getCurrentPosition(showPos, showErr);
+       }
+       else{
+           alert("Sorry! your Browser does not support Geolocation API")
+       }
+   }
+   //Showing Current Position on Google Map
+   function showPos(position){
+    let map = document.getElementById("demo");
+map.style.height = "500px";
+       latt = position.coords.latitude;
+       long = position.coords.longitude;
+       var lattlong = new google.maps.LatLng(latt, long);
+       var myOptions = {
+           center: lattlong,
+           zoom: 15,
+           mapTypeControl: true,
+           navigationControlOptions: {style:google.maps.NavigationControlStyle.SMALL}
+       }
+       var maps = new google.maps.Map(document.getElementById("demo"), myOptions);
+       var markers =
+       new google.maps.Marker({position:lattlong, map:maps, title:"You are here!"});
+   }
+
+   //Handling Error and Rejection
+        function showErr(error) {
+         switch(error.code){
+         case error.PERMISSION_DENIED:
+        alert("User denied the request for Geolocation API.");
+         break;
+        case error.POSITION_UNAVAILABLE:
+        alert("USer location information is unavailable.");
+       break;
+       case error.TIMEOUT:
+       alert("The request to get user location timed out.");
+       break;
+      case error.UNKNOWN_ERROR:
+       alert("An unknown error occurred.");
+       break;
+      }
+   }       
+   
+   </script>
+</html>
+
+
+
+

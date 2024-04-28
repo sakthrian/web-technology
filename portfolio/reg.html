@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Student Registration</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+h1 {
+    text-align: center;
+    color: #333;
+}
+label {
+    font-weight: bold;
+}
+input[type="text"],
+input[type="password"],
+input[type="submit"],
+input[type="checkbox"],
+input[type="radio"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-top: .4rem;
+    margin-bottom: .4rem;
+}
+input[type="radio"],
+input[type="checkbox"] {
+    width: auto;
+}
+input[type="submit"] {
+    background-color: #4c10d8;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 2rem;
+}
+input[type="submit"]:hover {
+    background-color: #3b2ad8;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>STUDENT REGISTRATION</h1>
+<form>
+<label for="fname">Student Name:</label><br>
+<input type="text" id="fname" name="fname"><br>
+<label for="freg">Student RegNo.:</label><br>
+<input type="text" id="freg" name="freg"><br>
+<label for="fid">Student Email:</label><br>
+<input type="text" id="fid" name="fid"><br>
+<label for="pwd">Password:</label><br>
+<input type="password" id="pwd" name="pwd"><br>
+<label for="radio">GENDER:</label><br>
+<input type="radio" id="female" name="gender" value="female">Female<br>
+<input type="radio" id="male" name="gender" value="male">Male<br>
+<label for="dept">Please select your department</label><br>
+<input type="checkbox" id="cse" name="dept" value="CSE">CSE<br>
+<input type="checkbox" id="ece" name="dept" value="ECE">ECE<br>
+<input type="checkbox" id="it" name="dept" value="IT">IT<br>
+<input type="submit" id="sub" name="submit" value="Submit"><br>
+</form>
+</div>
+</body>
+</html>

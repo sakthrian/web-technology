@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sakthrian's Portfolio</title>
+
+    <!-- box icons -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+
+    <!-- custom css -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- header design -->
+    <header class="header">
+      <a href="#" class="logo">Portfolio</a>
+
+      <i class='bx bx-menu' id="menu-icon"></i>
+
+      <nav class="navbar">
+        <a href="#home" class="active">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <!-- home section design -->
+    <section class="home" id="home">
+      <div class="home-content">
+        <h3>Hello, I'm</h3>
+        <h1>Sakthrian C</h1>
+        <h3>A <span class="multiple-text"></span></h3>
+        <p>I am a dedicated and results-oriented software developer with a passion for creating efficient and scalable solutions. I thrive in collaborative environments and enjoy tackling complex challenges to drive innovation</p>
+        <div class="social-media">
+          <a href="https://github.com/sakthrian/sakthrian" target="_blank"><i class='bx bxl-github'></i></a>
+          <a href="https://www.linkedin.com/in/sakthrian-c-19518a268/" target="_blank"><i class='bx bxl-linkedin' ></i></a>
+          <a href="https://www.instagram.com/_.naanthan_._sakthrian._/" target="_blank"><i class='bx bxl-instagram-alt'></i></a>
+          <a href="https://twitter.com/?lang=en-in" target="_blank"><i class='bx bxl-twitter'></i></a>
+        </div>
+        <a href="pdf/Resume.pdf" download="Sakthrian" class="btn">Download CV</a>
+      </div>
+      <div class="home-img">
+        <img src="images/withBg.png" alt="" >
+      </div>
+    </section>
+
+    <!-- about section design -->
+    <section class="about" id="about">
+      <div class="about-img">
+        <img src="images/withoutBg.png" alt="">
+      </div>
+
+      <div class="about-content">
+        <h2 class="heading">About <span>Me</span></h2>
+        <h3>Pre Final Year Student</h3>
+        <p>Hello! I'm Sakthrian C, a third-year student pursuing Computer Science Engineering at Puducherry Technological University. I have a strong passion for technology and a keen interest in exploring the world of computer science.</p>
+        <a href="about.html" target="_blank" class="btn">Read More</a>
+      </div>
+    </section>
+
+    <!-- services section design -->
+    <section class="services" id="services">
+      <h2 class="heading">Our <span>Services</span></h2>
+      <div class="services-container">
+
+        <div class="services-box">
+          <i class='bx bx-code-alt'></i>
+          <h3>Web Developement</h3>
+          <p>As a passionate web developer, I specialize in creating custom, responsive websites that are tailored to your specific needs and goals</p>
+          <a href="#" class="btn">Read More</a>
+        </div>
+
+        <div class="services-box">
+          <i class='bx bxl-android'></i>
+          <h3>Android Developement</h3>
+          <p>As an Android developer, I offer a range of services to bring your app idea to life and ensure its success on the Google Play Store.</p>
+          <a href="#" class="btn">Read More</a>
+        </div>
+
+        <div class="services-box">
+          <i class='bx bxs-paint'></i>
+          <h3>Graphic Designing</h3>
+          <p>As a creative Graphic Designer, I specialize in creating unique and memorable brand identities that reflect the essence of your brand.</p>
+          <a href="#" class="btn">Read More</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- portfolio section design -->
+    <section class="portfolio" id="portfolio">
+      <h2 class="heading">Latest <span>Project</span></h2>
+      <div class="portfolio-container">
+        <div class="portfolio-box">
+          <img src="images/portfolio1.jpg" alt="">
+          <div class="portfolio-layer">
+            <h4>HalloShelter</h4>
+            <p>Shared house marketplace designed to assist users in discovering shared rooms and roommates</p>
+            <a href="#"><i class='bx bx-link-external'></i></a>
+          </div>
+        </div>
+
+        <div class="portfolio-box">
+          <img src="images/portfolio2.jpg" alt="">
+          <div class="portfolio-layer">
+            <h4>Hotel Management</h4>
+            <p>Desktop Aplication for managing user details, admin details and rooms in hotels Built using C# and SQL </p>
+            <a href="#"><i class='bx bx-link-external'></i></a>
+          </div>
+        </div>
+
+        <div class="portfolio-box">
+          <img src="images/portfolio3.jpg" alt="">
+          <div class="portfolio-layer">
+            <h4>Object Identifier</h4>
+            <p>ML application used for detecting objects shown live in the camera Built using Python, OpenCV and TenserFlow</p>
+            <a href="#"><i class='bx bx-link-external'></i></a>
+          </div>
+        </div>
+
+        <div class="portfolio-box">
+          <img src="images/portfolio4.jpg" alt="">
+          <div class="portfolio-layer">
+            <h4>Web Design</h4>
+            <p>Personal Portfolio website Designed using HTML, CSS, JavaScript </p>
+            <a href="#"><i class='bx bx-link-external'></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- contact section design -->
+    <section class="contact" id="contact">
+      <h2 class="heading">Contact <span>Me!</span></h2>
+
+      <form action="#">
+        <div class="input-box">
+          <input type="text" placeholder="Full Name">
+          <input type="email" placeholder="Email Address">
+        </div>
+        <div class="input-box">
+          <input type="number" placeholder="Mobile Number">
+          <input type="text" placeholder="Email Subject">
+        </div>
+        <textarea name="" id="" cols="30" rows="10" placeholder="Your message"></textarea>
+        <input type="submit" value="Send Message" class="btn">
+      </form>
+    </section>
+
+    <!-- footer design -->
+    <footer class="footer">
+      <div class="footer-text">
+        <p>Copyright &copy; 2024 by Rian | All Rights Reserved.</p>
+      </div>
+      <div class="footer-iconTop">
+        <a href="#home"><i class='bx bx-up-arrow-alt'></i></a>
+      </div>
+    </footer>
+
+
+    <!-- scroll reveal -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <!-- typed js -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+    <!-- custom js -->
+    <script src="script.js"></script>
+  </body>
+</html>
+
