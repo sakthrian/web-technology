@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DOM Manipulation Example</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        background-color: #b914eb;
+        color: white;
+    }
+    #content {
+        flex-grow: 1;
+        padding: 20px;
+    }
+    #myDiv {
+        margin-top: 50px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #aa25d3;
+        text-align: center;
+    }
+    #myList {
+        list-style-type: none;
+        padding: 0;
+        margin-top: 20px;
+        color: white;
+    }
+    #cart {
+        width: 300px;
+        padding: 10px;
+        background-color: #8215a3;
+        border-radius: 5px;
+        margin-top: 20px;
+    }
+    button {
+        margin: 5px;
+        padding: 5px 10px;
+        border: none;
+        border-radius: 3px;
+        background-color: #aa25d3;
+        color: white;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #8215a3;
+    }
+    .hidden {
+        display: none;
+    }
+    .cart-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5px;
+        margin-bottom: 5px;
+        background-color: #8215a3;
+        border-radius: 3px;
+        width: 200px;
+    }
+    .cart-item span {
+        flex-grow: 1;
+    }
+    .cart-item button {
+        margin-left: 10px;
+    }
+</style>
+</head>
+<body>
+
+<div id="content">
+    <div id="myDiv">Rian Shopping Mart</div>
+    <div>
+        <ul id="myList">
+            <!-- Sample list items with separate "Add to Cart" buttons -->
+            <li class="item">
+                <span>Red T-Shirt 20 Rs</span>
+                <button onclick="insertItem('Red T-Shirt')">Add to Cart</button>
+            </li>
+            <li class="item">
+                <span>Blue Jeans 50 Rs</span>
+                <button onclick="insertItem('Blue Jeans')">Add to Cart</button>
+            </li>
+            <li class="item">
+                <span>Black Shoes 60 Rs</span>
+                <button onclick="insertItem('Black Shoes')">Add to Cart</button>
+            </li>
+            <li class="item">
+                <span>White Socks 5 Rs</span>
+                <button onclick="insertItem('White Socks')">Add to Cart</button>
+            </li>
+            <li class="item">
+                <span>Gray Hat 15 Rs</span>
+                <button onclick="insertItem('Gray Hat')">Add to Cart</button>
+            </li>
+        </ul>
+    </div>
+    <div>
+        <button onclick="changeContent()">Change Content</button>
+        <button onclick="toggleVisibility('cart')">View Cart</button>
+    </div>
+</div>
+
+<div id="cart" class="hidden">
+    <h3>Cart</h3>
+    <ul id="cartItems"></ul>
+    <div id="total"></div>
+</div>
+
+
+
+<script>
+    const itemPrices = {
+        "Red T-Shirt": 20,
+        "Blue Jeans": 50,
+        "Black Shoes": 60,
+        "White Socks": 5,
+        "Gray Hat": 15
+    };
+    let totalAmount = 0;
+
+    function changeContent() {
+        var myDiv = document.getElementById("myDiv");
+        myDiv.textContent = "Sakthrian Online Shopping Mart";
+        myDiv.innerHTML = "<strong>Sakthrian Online Shopping Mart</strong>";
+    }
+
+    function insertItem(itemName) {
+        var cartItems = document.getElementById("cartItems");
+        var newItem = document.createElement("li");
+        newItem.className = "cart-item";
+        newItem.innerHTML = `
+            <span>${itemName}</span>
+            <button onclick="removeItem(this, ${itemPrices[itemName]})">Remove</button>
+        `;
+        cartItems.appendChild(newItem);
+        totalAmount += itemPrices[itemName];
+        updateTotal();
+    }
+
+    function removeItem(button, price) {
+        var listItem = button.parentElement;
+        listItem.remove();
+        totalAmount -= price;
+        updateTotal();
+    }
+
+    function updateTotal() {
+        var totalElement = document.getElementById("total");
+        totalElement.textContent = `Total: Rs ${totalAmount}`;
+    }
+
+    function toggleVisibility(elementId) {
+        var element = document.getElementById(elementId);
+        if (element.classList.contains("hidden")) {
+            element.classList.remove("hidden");
+        } else {
+            element.classList.add("hidden");
+        }
+    }
+</script>
+
+</body>
+</html>

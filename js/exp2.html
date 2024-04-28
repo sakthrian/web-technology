@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control Flow in JavaScript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #b914eb;
+        }
+        .container {
+            max-width: 800px;
+            padding: 20px;
+            background-color: #360546;
+            color: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            text-align: center;
+            color: #ffffff;
+        }
+        p {
+            margin: 0;
+        }
+        .output {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #8215a3; 
+            border-radius: 5px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Control Flow in JavaScript</h1>
+    
+        <div>
+            <h2>If-else statements:</h2>
+            <div class="output" id="ifElseOutput"></div>
+        </div>
+    
+        <div>
+            <h2>Looping over an array:</h2>
+            <ul class="output" id="loopOutput"></ul>
+        </div>
+    
+        <div>
+            <h2>Switch case statements:</h2>
+            <div class="output" id="switchOutput"></div>
+        </div>
+    </div>
+    
+    <script>
+        // If-else statements
+        let x = parseInt(prompt("Enter 1st number for if else statement:"));
+        let y = parseInt(prompt("Enter 2nd number if else statement:"));
+        let ifElseOutput = document.getElementById("ifElseOutput");
+        if (x > y) {
+            ifElseOutput.textContent = x+" is greater than "+y;
+        } else {
+            ifElseOutput.textContent = y+" is greater than "+x;
+        }
+    
+        // Looping over an array
+        let number = parseInt(prompt("Enter a number for iteration"));
+        let loopOutput = document.getElementById("loopOutput");
+        for (let i = 0; i < number; i++) {
+            let li = document.createElement("li");
+            li.textContent = String(i+1);
+            loopOutput.appendChild(li);
+        }
+    
+        // Switch case statements
+        let dayString = prompt("Enter the day for switch case");
+        let day = dayString.toLowerCase();
+        let switchOutput = document.getElementById("switchOutput");
+        switch (day) {
+            case "monday":
+                switchOutput.textContent = "Today is Monday";
+                break;
+            case "tuesday":
+                switchOutput.textContent = "Today is Tuesday";
+                break;
+            case "wednesday":
+                switchOutput.textContent = "Today is Wednesday";
+                break;
+            case "thursday":
+                switchOutput.textContent = "Today is Thursday";
+                break;
+            case "friday":
+                switchOutput.textContent = "Today is Friday";
+                break;
+            case "saturday":
+                switchOutput.textContent = "Today is Saturday";
+                break;
+            case "sunday":
+                switchOutput.textContent = "Today is Sunday";
+                break;
+            default:
+                switchOutput.textContent = "It's not a proper week day";
+        }
+    </script>
+</body>
+</html>

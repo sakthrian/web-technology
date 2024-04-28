@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Function and Scope Examples</title>
+<style>
+body {
+    background-color: #b914eb;
+    text-align: center;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+h2, h3 {
+    color: #f7f7f7;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #8215a3;
+   
+    color: white;
+}
+
+button:hover {
+    background-color: #aa25d3;
+}
+
+input[type="number"] {
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #aa25d3;
+}
+
+p {
+    margin: 10px 0;
+}
+</style>
+</head>
+<body>
+<h1>Function and Scope Examples</h1>
+<h3>Example 1: Function to calculate factorial</h3>
+<label for="factorialInput">Enter a number:</label>
+<input type="number" id="factorialInput">
+<button onclick="calculateFactorial()">Calculate Factorial</button>
+<p id="factorialResult"></p>
+<h3>Example 2: Exploring var, let, and const</h3>
+<button onclick="varScope()">Using var</button>
+<button onclick="letScope()">Using let</button>
+<button onclick="constScope()">Using const</button>
+<p id="scopeResult"></p>
+<h3>Example 3: Nested functions and lexical scoping</h3>
+<button onclick="outerFunction()">Execute Outer Function</button>
+<p id="lexicalScopeResult"></p>
+<script>
+function calculateFactorial() {
+    let num = parseInt(document.getElementById("factorialInput").value);
+    let result = factorial(num);
+    document.getElementById("factorialResult").textContent = "Factorial of " + num + " is: " + result;
+}
+
+function factorial(num) {
+    if (num === 0 || num === 1) {
+        return 1;
+    } else {
+        return num * factorial(num - 1);
+    }
+}
+
+function varScope() {
+    var x = 10;
+    if (true) {
+        var x = 20;
+        document.getElementById("scopeResult").textContent = "Using var: " + x;
+    }
+    document.getElementById("scopeResult").textContent += " | Outside block: " + x;
+}
+
+function letScope() {
+    let y = 10;
+    if (true) {
+        let y = 20;
+        document.getElementById("scopeResult").textContent = "Using let: " + y;
+    }
+    document.getElementById("scopeResult").textContent += " | Outside block: " + y;
+}
+
+function constScope() {
+    const z = 10;
+    if (true) {
+        const z = 20;
+        document.getElementById("scopeResult").textContent = "Using const: " + z;
+    }
+    document.getElementById("scopeResult").textContent += " | Outside block: " + z;
+}
+
+function outerFunction() {
+    let outerVar = "I'm outer!";
+    function innerFunction() {
+        document.getElementById("lexicalScopeResult").textContent = outerVar;
+    }
+    innerFunction();
+}
+</script>
+</body>
+</html>
