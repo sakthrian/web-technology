@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch API Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #b914eb;
+            color: white;
+        }
+        button {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 3px;
+            background-color: #aa25d3;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #8215a3;
+        }
+        #output {
+            margin-top: 20px;
+            white-space: pre-wrap;
+            text-align: left;
+            width: 80%;
+            max-width: 600px;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Fetch API Example</h1>
+
+    <div id="output"></div>
+
+    <button id="fetch" onclick="fetchDataXHR()">Fetch</button>
+
+    <script>
+        
+        function formatData(data) {
+            return data.map(student => {
+                return Object.entries(student).map(([key, value]) => `${key}: ${value}`).join('\n');
+            }).join('\n\n');
+        }
+
+        function fetchDataXHR() {
+            const output = document.getElementById('output');
+            const xhr = new XMLHttpRequest();
+            const file = "details.json";
+
+            xhr.open('GET', file, true);
+
+            xhr.onload = function() {
+                if (xhr.status >= 200 && xhr.status < 300) {
+                    const data = JSON.parse(xhr.responseText);
+                    output.style.display = 'block'
+                    output.innerText = formatData(data.students);
+                } else {
+                    output.innerText = `Network response was not ok: ${xhr.statusText}`;
+                    output.style.display = 'block'
+                }
+            };
+
+            xhr.onerror = function() {
+                output.innerText = `XHR error: ${xhr.statusText}`;
+                output.style.display = 'block'
+            };
+
+            xhr.send();
+        }
+    </script>
+</body>
+</html>
