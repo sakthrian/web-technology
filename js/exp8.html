@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promises and Async/Await Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            background-color: #b914eb;
+            color: white;
+        }
+        button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #aa25d3;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #8215a3;
+        }
+        #output {
+            margin-top: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            display: none;
+            white-space: pre-wrap;
+            text-align: center;
+            max-width: 600px;
+            width: 80%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Promises and Async/Await Example</h1>
+
+    <button onclick="displayUserData(1)">Fetch User 1</button>
+    <button onclick="displayUserData(2)">Fetch User 2</button>
+    <button onclick="displayUserData(3)">Fetch User 3</button>
+    <div id="output"></div>
+
+    <script>
+        function fetchUserData(userId) {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    const users = {
+                        1: { id: 1, name: "rian", email: "rian@gmail.com" },
+                        2: { id: 2, name: "sakthi", email: "sakthi@gmail.com" }
+                    };
+                    if (users[userId]) {
+                        resolve(users[userId]);
+                    } else {
+                        reject(new Error("User not found"));
+                    }
+                }, 2000); 
+            });
+        }
+
+        async function displayUserData(userId) {
+            const output = document.getElementById('output');
+            output.style.display = 'none';
+            try {
+                const userData = await fetchUserData(userId);
+                output.innerText = `User Data:\nName: ${userData.name}\nEmail: ${userData.email}`;
+                output.style.display = 'block'; 
+            } catch (error) {
+                output.innerText = "Error: " + error.message;
+                output.style.display = 'block'; 
+            }
+        }
+    </script>
+</body>
+</html>
